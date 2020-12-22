@@ -39,7 +39,7 @@ function loadQuiz(){
     d_text.innerText = currentQuizData.d;
 }
 
-getSelectedAnswer(){
+function getSelectedAnswer(){
     for (var i = 0; length = answerChoices.length; i++){
         
     }
