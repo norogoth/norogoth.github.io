@@ -25,6 +25,7 @@ const c_text = document.getElementById('c_text');
 const d_text = document.getElementById('d_text');
 const submitButton = document.getElementById('submitButton');
 const answerChoices = document.getElementsByName('answer');
+const backButton = document.getElementById("back-button");
 
 let currentQuestion = 0;
 
@@ -56,4 +57,8 @@ submitButton.addEventListener("click", () => {
     else{
         window.location.assign("./results.html");
     }
+});
+
+backButton.addEventListener("click", () => {
+    window.location.assign("https://norogoth.github.io/");
 });

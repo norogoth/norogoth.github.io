@@ -1,4 +1,5 @@
 const newYearsString = '01/01/2021';
+const backButton = document.getElementById("back-button");
 
 function countdown() {
     const daysE1 = document.getElementById('days');
@@ -28,6 +29,10 @@ function countdown() {
 
     console.log(daysLeft + " " + hoursLeft + " " + minsLeft + " " + secondsLeft);
 }
+
+backButton.addEventListener("click", () => {
+    window.location.assign("https://norogoth.github.io/");
+});
 
 countdown(); //initial call for date
 
