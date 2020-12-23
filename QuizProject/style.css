@@ -42,14 +42,16 @@ button {
     cursor: pointer;
 }
 
-.qr-pairs {
+.qr-pair {
     display: flex;
     flex-direction: row;
     padding: 1rem;
+
 }
 
-.qr-pairs > li {
+.qr-pair > li {
     margin: 10px;
+    
 }
 
 .back-button {
