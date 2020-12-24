@@ -45,13 +45,12 @@ button {
 .qr-pair {
     display: flex;
     flex-direction: row;
-    padding: 1rem;
-
+    padding: .5rem;
 }
 
-.qr-pair > li {
+li {
     margin: 10px;
-    
+    display: inline;
 }
 
 .back-button {

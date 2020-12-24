@@ -40,16 +40,16 @@ function loadQuiz(){
     d_text.innerText = currentQuizData.d;
 }
 
-function getSelectedAnswer(){
-    for (var i = 0; length = answerChoices.length; i++){
-        
+function setSelectedAnswer(){
+    for (var i = 0; i < answerChoices.length - 1; i++){
+        if (answerChoices[i].checked){
+            localStorage.setItem(i, answerChoices[i]);
+        }
     }
 }
 
 submitButton.addEventListener("click", () => {
-    if (answerChoices){
-
-    }
+    setSelectedAnswer();
     if (quizData.length - 1 > currentQuestion){
         currentQuestion++;
         loadQuiz();
