@@ -1,5 +1,18 @@
 const backButton = document.getElementById("back-button");
 
+function getQuestionAnswerPairs(){
+    var isThatAll = false;
+    var i = 0;
+    while(isThatAll){
+        if (localStorage.getItem(i)){
+            
+        }
+        else {
+            isThatAll = true;
+        }
+    }
+}
+
 function loadQuestions() {
     //create question
     var question = document.createElement("li");
