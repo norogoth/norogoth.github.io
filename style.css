@@ -9,6 +9,7 @@
     background-color: #332544;
     border-radius: 15px;
     box-shadow: 0 0 10px 2px rgba(0,0,0,.1);
+    max-width: 25rem;
 }
 
 .subheading {
@@ -35,18 +36,24 @@ li {
     padding: 1rem;  
 }
 
+h2 {
+    font-size: 1rem;
+    font-style: normal;
+}
+
 button {
     border-radius: 15px;
+    font-size: 1.25rem;
     color: white;
     border: none;
     background-color: #4f4061;
     font-family: inherit;
     display: block;
     width: 100%;
-    padding: 2rem;
+    padding: 1rem;
     cursor: pointer;
 }
 
 button:hover {
-    background-color: #5c5268;
+    background-color: #564769;
 }

@@ -5,10 +5,16 @@
     
 }
 
+h1 {
+    text-align: center;
+}
+
 .quiz-container {
     background-color: #332544;
     border-radius: 15px;
     box-shadow: 0 0 10px 2px rgba(0,0,0,.1);
+    min-width: 350px;
+    
 }
 
 .quiz-header {
@@ -40,6 +46,17 @@ button {
     width: 100%;
     padding: 2rem;
     cursor: pointer;
+}
+
+.qr-pair {
+    display: flex;
+    flex-direction: row;
+    padding: .5rem;
+}
+
+li {
+    margin: 10px;
+    display: inline;
 }
 
 .back-button {
