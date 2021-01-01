@@ -5,10 +5,16 @@
     
 }
 
+h1 {
+    text-align: center;
+}
+
 .quiz-container {
     background-color: #332544;
     border-radius: 15px;
     box-shadow: 0 0 10px 2px rgba(0,0,0,.1);
+    min-width: 350px;
+    
 }
 
 .quiz-header {
