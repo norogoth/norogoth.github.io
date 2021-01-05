@@ -1,59 +1,76 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+  
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;600&display=swap");
 
 * {
     box-sizing: border-box;
-    
+}
+#homepageButton {
+    background-color: rgb(149, 157, 199);
+    border-style: none;
+    display:block;
+    width: 100%;
 }
 
-.sites-container {
-    background-color: #332544;
-    border-radius: 15px;
-    box-shadow: 0 0 10px 2px rgba(0,0,0,.1);
-    max-width: 25rem;
+#homepageHeader > *{
+    text-align: center;
+    color: rgb(241, 241, 241);
 }
 
-.subheading {
+p {
+    color: white;
     text-align: center;
 }
 
+body {
+    background-color: rgb(63, 63, 63);
+}
+
+.topNav {
+    display: flex;
+    justify-content: center;
+    background-color: rgb(255, 222, 132);
+    justify-content: space-between;
+
+}
+
+.wintTweet {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#gooseGif {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+    padding: 1rem;
+}
+
+.topNav a{
+    /* background-color: rgb(54, 54, 54); */
+    overflow:hidden;
+    color:rgb(54, 54, 54);
+    text-align: center;
+    padding: .5rem;
+    text-decoration: none;
+    font-size: 1rem;
+}
+
+header {
+    align-items: center;
+}
+
+.gooseGif {
+    align-items: center;
+}
+
+.topNav a:hover {
+    background-color: white;
+    color: black;
+}
 
 body {
     font-family: "Poppins", sans-serif;
     margin: 0;
-    color: whitesmoke;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: #3a3046;
-}
-
-ul {
-    list-style-type: none;
-    padding: 0;
-}
-
-li {
-    padding: 1rem;  
-}
-
-h2 {
-    font-size: 1rem;
-    font-style: normal;
-}
-
-button {
-    border-radius: 15px;
-    font-size: 1.25rem;
-    color: white;
-    border: none;
-    background-color: #4f4061;
-    font-family: inherit;
-    display: block;
-    width: 100%;
-    padding: 1rem;
-    cursor: pointer;
-}
-
-button:hover {
-    background-color: #564769;
 }
