@@ -5,9 +5,9 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Goose - Game</title>
         <link rel="stylesheet" href="../StyleSheets/style.css" />
-        <script src="../Scripts/script.js" defer></script>
+        <script src="script.js" defer></script>
     </head>
-    <body>
+    <body onload="startGame()">
         <div class="mobile-container">
             <button href="index.html" id="homepageButton">
                 <header id="homepageHeader">
@@ -16,15 +16,18 @@
                 </header>
             </button>
             <div class="main-content">
-                <dv class="topNav">
+                <div class="topNav" >
                     <a href="../About/about.html">About</a>
                     <a href="../GoosePics/goosePics.html">Goose Pics</a>
                     <a href="../WintTweet/wintTweet.html">My Favorite Tweet</a>
                     <a href="../GooseInfo/gooseInfo.html">Goose Info</a>
                     <a href="../GooseGame/gooseGame.html">Game</a>
                     <a href="../SpinnyDuck/spinnyDuck.html">Important</a>
-                </dv>
-                <p>Oh SHOOT. I forgot the game!</p>
+                </div>
+                <div id="canvas-div">
+                    <canvas  id="myCanvas" width="600" height="300">lorem ipsum</canvas>
+                    <button id="jump-button"> Jump</button>
+                </div>
             </div>
         </div>
     </body>
