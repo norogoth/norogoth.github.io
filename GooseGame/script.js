@@ -1,5 +1,5 @@
 let myPlayer;
-myPlayer = new Component(30, 30, "red", 10, 120);
+myPlayer = new Component(30, 30, "red", 10, 20, "player block");
 let myObstacles = [];
 let letmyScore;
 myScore  = new Component("30px", "Consolas", "white", 280, 40, "text");
@@ -28,11 +28,15 @@ function Component(width, height, color, x, y, type){
     this.color = color;
     this.x = x;
     this.y = y;
+    this.speedX = 0;
+    this.speedY = 0;
     this.type = type;
     this.gravity = 0.05;
     this.gravitySpeed = 0;
     this.update = function() {
-        
+        if (this.type == "player block"){
+            console.log(this.type + " is at x: " + this.x + " y: " + this.y);
+        }
         context = myGameArea.context;
         if (this.type == "text"){
             this.gravity = 0;
@@ -48,7 +52,9 @@ function Component(width, height, color, x, y, type){
     this.moveComponent = function() {
         this.gravitySpeed += this.gravity;
         this.x += this.speedX;
-        let bottom = myGameArea.height - this.height;
+        this.y += this.speedY + this.gravitySpeed;
+        let bottom = myCanvas.height - this.height;
+        console.log("this.y: " + this.y + " bottom: " + bottom + "myGameArea.height: " + myGameArea.height + "this.height: " + this.height);
         if (this.y >= bottom){
             this.y = bottom;
         }
@@ -78,6 +84,7 @@ function Component(width, height, color, x, y, type){
 let myGameArea = {
     start: function() {
         this.context = myCanvas.getContext("2d");
+        this.height = 
         this.frameNo = 0;
         this.interval = setInterval(updateGameArea, 20);
     },
@@ -113,11 +120,11 @@ function updateGameArea() {
     }
     
     myScore.text = "Score: " + myGameArea.frameNo; 
-    myScore.update();//TODO: resolve error that states that myScore has not update function.
+    myScore.update();
     myPlayer.moveComponent();
     myPlayer.update(); //TODO: Get component to show up
 }
 
 function jump(n) {
-    myPlayer.gravity = n;
+    myPlayer.speedY = n;
 }
