@@ -1,16 +1,25 @@
-let myPlayer;
+var myPlayer;
 
 let myObstacles = [];
 
 let myCanvas = document.getElementById("myCanvas");
 let context = myCanvas.getContext("2d");
 
+myPlayer = new Component(30, 30, "red", 10, 20, "player block");
+myScore  = new Component("30px", "Consolas", "white", 280, 40, "text");
 
-function startGame(){
-   
-    myPlayer = new Component(30, 30, "red", 10, 20, "player block");
-    myScore  = new Component("30px", "Consolas", "white", 280, 40, "text");
-    
+let intervalSet = false;
+
+const canvasWidth = myCanvas.width;
+const canvasHeight = myCanvas.height;
+
+
+function startGame(){    
+    myPlayer.gravity = 0.05;
+    myGameArea.start();
+}
+
+function startGameAgain(myPlayer){
     myPlayer.gravity = 0.05;
     myGameArea.start();
 }
@@ -99,7 +108,18 @@ let myGameArea = {
         this.context = myCanvas.getContext("2d");
         this.height = 
         this.frameNo = 0;
-        this.interval = setInterval(updateGameArea, 20);
+
+        try {
+            clearInterval(interval);
+        }
+        catch{
+            console.log("did not work");
+        }
+        if (!intervalSet){
+            this.interval = setInterval(updateGameArea, 20);
+            intervalSet = true;
+        }
+        
     },
     clear: function() {
         this.context.clearRect(0,0, myCanvas.width, myCanvas.height);
@@ -107,8 +127,7 @@ let myGameArea = {
 }
 
 function updateGameArea() {
-    const canvasWidth = myCanvas.width;
-    const canvasHeight = myCanvas.height;
+    
     let height, gap, minHeight, maxHeight, minGap, maxGap;
     for (i = 0; i < myObstacles.length; i ++){
         if (myPlayer.isCrashedWith(myObstacles[i])) {
@@ -139,7 +158,7 @@ function updateGameArea() {
     myScore.text = "Score: " + myGameArea.frameNo; 
     myScore.update();
     myPlayer.moveComponent();
-    myPlayer.update(); //TODO: Get component to show up
+    myPlayer.update();
 }
 
 function createRetryButton(){
@@ -149,14 +168,16 @@ function createRetryButton(){
         let canvasDiv = document.getElementById("canvas-div");
         canvasDiv.appendChild(retryButton);
         retryButton.addEventListener("click", function() {
-            myScore = 0;
+            myGameArea.frameNo = 0;
             for (i = 0; i < myObstacles.length; i ++){
                 myObstacles = [];
                 myGameArea.gameOver = false;
             }
             retryButton.parentNode.removeChild(retryButton);
         });
-        startGame();
+        myPlayer.x = 10;
+        myPlayer.y = 20;
+        startGameAgain(myPlayer);
     
 }
 
