@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Goose - Game</title>
+        <link rel="stylesheet" href="../StyleSheets/style.css" />
+        <script src="script.js" defer></script>
+    </head>
+    <body onload="startGame()">
+        <div class="mobile-container">
+            <button href="index.html" id="homepageButton">
+                <header id="homepageHeader">
+                    <h1>Goose Website</h1>
+                    <p>This is MY website!!!! (Do not TOUCH anything?!)<p>
+                </header>
+            </button>
+            <div class="main-content">
+                <div class="topNav" >
+                    <a href="../About/about.html">About</a>
+                    <a href="../GoosePics/goosePics.html">Goose Pics</a>
+                    <a href="../WintTweet/wintTweet.html">My Favorite Tweet</a>
+                    <a href="../GooseInfo/gooseInfo.html">Goose Info</a>
+                    <a href="../GooseGame/gooseGame.html">Game</a>
+                    <a href="../SpinnyDuck/spinnyDuck.html">Important</a>
+                </div>
+                <div id="canvas-div">
+                    <canvas  id="myCanvas" width="600" height="300">lorem ipsum</canvas>
+                    <button id="jump-button" onmousedown="jump(-0.15)" onmouseup="jump(0.05)"> Jump</button>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
