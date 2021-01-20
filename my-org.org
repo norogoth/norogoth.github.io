@@ -1,0 +1,6 @@
+* My Org File
+** TODO Create .el file
+** TODO Copy contents into .el file
+** TODO Call the .el file in the init file
+** TODO Doom sync
+** TODO Try to live host
