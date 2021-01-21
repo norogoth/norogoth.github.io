@@ -4,6 +4,7 @@ const myGitHubButton = document.getElementById('myGitHubButton');
 const nyCountDownButton = document.getElementById('nyCountDownButton');
 const simpleQuizButton = document.getElementById('simpleQuizButton');
 const gooseButton = document.getElementById('gooseButton');
+const calcButton = document.getElementById('calcButton');
 
 myGitHubButton.addEventListener("click", () => {
     window.location.assign("https://github.com/norogoth");
@@ -19,4 +20,8 @@ simpleQuizButton.addEventListener("click", () => {
 
 gooseButton.addEventListener("click", () => {
     window.location.assign("./Goose/index.html")
+})
+
+calcButton.addEventListener("click", () => {
+    window.location.assign("./calculator/calculator.html")
 })
