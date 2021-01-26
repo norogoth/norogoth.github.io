@@ -25,6 +25,11 @@ table {
     width: 100%;
 }
 
+.calcButton:hover{
+    background-color: rgb(160, 152, 194);
+    color:beige;
+}
+
 table {
     border-spacing: 1rem;
 }
