@@ -2,6 +2,19 @@ body {
     background-color: rgb(77, 75, 99);
 }
 
+#back-button {
+    border-radius: 15px;
+    font-size: 1.25rem;
+    color: white;
+    border: none;
+    background-color: #4f4061;
+    font-family: inherit;
+    display: block;
+    width: 100%;
+    padding: 1rem;
+    cursor: pointer;
+}
+
 #calculator {
     background-color: rgb(101, 88, 143);
     margin: auto;
