@@ -1,6 +1,7 @@
 //list of all my buttons
 const allButtons = window.document.getElementsByClassName("calcButton");
 const screen = window.document.getElementById("inputDisplay");
+const backButton = document.getElementById("back-button");
 
 let currentValue = 0;
 let operand = null;
@@ -38,6 +39,10 @@ function calculateNumber(){
 	operand = null;
 	argument = null;
 }
+
+backButton.addEventListener("click", () => {
+    window.location.assign("https://norogoth.github.io/");
+});
 
 function pressNum(digit){
 	//Check if we have an operand. If we do, we will edit the argument.

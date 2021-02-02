@@ -2,13 +2,17 @@ body {
     background-color: rgb(77, 75, 99);
 }
 
-#back-button {
-    border-radius: 15px;
+.back-button {
+    position: fixed;
     font-size: 1.25rem;
+    bottom: 0;
+    left: 0;
+    padding: .5rem;
+    border-radius: 15px;
     color: white;
     border: none;
     background-color: #4f4061;
-    font-family: inherit;
+    font-family:  "Poppins", sans-serif;
     display: block;
     width: 100%;
     padding: 1rem;
