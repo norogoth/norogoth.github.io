@@ -110,5 +110,5 @@ submitButton.addEventListener("click", () => {
 });
 
 backButton.addEventListener("click", () => {
-    window.location.assign("https://norogoth.github.io/");
+    window.location.assign("../index.html");
 });

@@ -31,7 +31,7 @@ function countdown() {
 }
 
 backButton.addEventListener("click", () => {
-    window.location.assign("https://norogoth.github.io/");
+    window.location.assign("../index.html");
 });
 
 countdown(); //initial call for date
