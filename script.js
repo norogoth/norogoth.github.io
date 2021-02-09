@@ -3,6 +3,7 @@
 const myGitHubButton = document.getElementById('myGitHubButton');
 const nyCountDownButton = document.getElementById('nyCountDownButton');
 const simpleQuizButton = document.getElementById('simpleQuizButton');
+const toDoButton = document.getElementById('toDoButton');
 const gooseButton = document.getElementById('gooseButton');
 const calcButton = document.getElementById('calcButton');
 
@@ -25,3 +26,7 @@ gooseButton.addEventListener("click", () => {
 calcButton.addEventListener("click", () => {
     window.location.assign("./calculator/calculator.html")
 })
+
+toDoButton.addEventListener("click", () => {
+    window.location.assign("./toDoList");
+});
