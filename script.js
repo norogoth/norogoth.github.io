@@ -28,5 +28,5 @@ calcButton.addEventListener("click", () => {
 })
 
 toDoButton.addEventListener("click", () => {
-    window.location.assign("./toDoList/index.html");
+    window.location.assign("./ToDoList/index.html");
 });
