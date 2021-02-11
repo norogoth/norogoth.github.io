@@ -1,6 +1,5 @@
-* My Org File
-** TODO Create .el file
-** TODO Copy contents into .el file
-** TODO Call the .el file in the init file
-** TODO Doom sync
-** TODO Try to live host
+* Today's ToDos
+    ** TODO: apply
+    ** TODO: pp
+    ** TODO: Fix the SQL problem for gosh sake.
+    ** TODO: Refactor the todo list to use state design
