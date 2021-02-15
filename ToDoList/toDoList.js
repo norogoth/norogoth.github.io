@@ -27,6 +27,7 @@ export const toDoList = {
         newToDo.innerHTML = inputText;
         newToDo.addEventListener("click", () =>{
             newToDo.remove();
+            pubsub.publish('toDoDeleted', inputText);
         })
         toDoListDiv.appendChild(newToDo);
         pubsub.publish('toDoAdded', inputText);

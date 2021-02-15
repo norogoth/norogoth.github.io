@@ -1,7 +1,7 @@
 import { pubsub } from './pubsub.js';
 import { toDoList } from './toDoList.js';
 
-pubsub.subscribe('toDoAdded',toDoList.render);
+//pubsub.subscribe('toDoAdded',toDoList.render); //TODO: Fix this.
 
 //error message handling
 const errorMessage = document.getElementById("errorMessage");

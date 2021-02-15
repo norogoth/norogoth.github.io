@@ -5,16 +5,16 @@ export const pubsub = {
         this.events[eventName] = this.events[eventName] || [];
         this.events[eventName].push(fn);
     },
-    unsubscribe: (eventName, fn) => {
+    unsubscribe: function(eventName, fn) {
         console.log("PUBSUB unsubscribed: EventName: " + eventName + "function: " + fn);        
         if (this.events[eventName]){
             this.events[eventName] = this.events[eventName].filter(f => f != fn);
         }
     },
-    publish: (eventName, data) => {
+    publish: function(eventName, data) {
         console.log(`PUBSUB: Making a broadcast about ${eventName} with ${data}`); 
         if (this.events[eventName]){
-            this.events[eventName].array.forEach(f => {
+            this.events[eventName].forEach(f => {
                 f(data);
             });
         }

@@ -16,22 +16,29 @@ body {
     color: white;
     border: none;
     background-color: #4f4061;
-    font-family:  "Poppins", sans-serif;
+    font-his will have a deleted items area. Hopefully collapsable.pins", sans-serif;
     display: block;
     width: 100%;
     padding: 1rem;
     cursor: pointer;
 }
 
-#ToDoListDiv {
+.gridContainer {
+    display: grid;
+    grid-auto-flow: column;
+    grid-template-columns: 1fr 2fr 1fr;
+    gap: 2rem;
+    margin: 0 auto;
+    align-items: start;
+}
+
+.grid-item {
     padding: 1rem;
-    justify-content: center;
-    margin: auto;
     border-radius: 1rem;
     background-color: rgb(112, 111, 179);
-    width: 60%;
+    width: 80%;
     min-width: 30px;
-    max-width: 400px;
+    max-width: 1000px;
     color: rgb(255, 255, 255);
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
@@ -43,14 +50,29 @@ body {
     text-align: center;
 }
 
-#ToDos > *:hover{
+#ToDos > *:hover, #deletedToDosButton:hover, #back-button:hover{
     background-color: rgb(160, 152, 194);
     color:beige;
+}
+
+#ToDos > *:hover {
     text-decoration: line-through;
 }
 
+#ToDoListDiv {
+    width: 100%;
+}
 
-#ToDos > * {
+#deletedToDosButton {
+    margin: auto;
+}
+
+#counterDiv, #deletedDiv {
+    display: inline-block;
+    font-size: 0.8rem;
+}
+
+#ToDos > *, #deletedToDosButton {
     display: flex;
     flex-direction: column;
     padding: 1rem;
@@ -67,7 +89,7 @@ body {
 #ToDos > *, #inputNewToDo {
     margin-left: auto;
     margin-right: auto;
-    width: 70%;
+    width: 90%;
 }
 
 
