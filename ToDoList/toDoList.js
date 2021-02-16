@@ -3,8 +3,6 @@ import {pubsub} from './pubsub.js';
 const toDoListDiv = document.getElementById("ToDos");
 const inputNewToDo = document.getElementById("inputNewToDo");
 
-//subscribe to pubsubdeletion
-pubsub.subscribe('toDoUndeleted', createNewToDo());
 
 //Handle input
 export const toDoList = {
@@ -38,3 +36,5 @@ export const toDoList = {
         pubsub.publish('toDoAdded', inputText);
     },
 }
+
+pubsub.subscribe('toDoUndeleted', toDoList.createNewToDo);
