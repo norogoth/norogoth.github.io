@@ -24,6 +24,7 @@ export const toDoList = {
     },
 
     createNewToDo: function(inputText) {
+        console.log("A new todo was created with data: " + inputText);
         const newToDo = document.createElement("button");
         newToDo.innerHTML = inputText;
         newToDo.addEventListener("click", () =>{
@@ -37,4 +38,4 @@ export const toDoList = {
     },
 }
 
-pubsub.subscribe('toDoUndeleted', toDoList.createNewToDo);
+pubsub.subscribe('toDoUnDeleted', toDoList.createNewToDo);
