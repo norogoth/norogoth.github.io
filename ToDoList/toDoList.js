@@ -3,6 +3,9 @@ import {pubsub} from './pubsub.js';
 const toDoListDiv = document.getElementById("ToDos");
 const inputNewToDo = document.getElementById("inputNewToDo");
 
+//subscribe to pubsubdeletion
+pubsub.subscribe('toDoUndeleted', createNewToDo());
+
 //Handle input
 export const toDoList = {
     render: function() {
@@ -29,6 +32,8 @@ export const toDoList = {
             newToDo.remove();
             pubsub.publish('toDoDeleted', inputText);
         })
+        newToDo.classList.add("standardButton");
+        newToDo.classList.add("ToDo");
         toDoListDiv.appendChild(newToDo);
         pubsub.publish('toDoAdded', inputText);
     },

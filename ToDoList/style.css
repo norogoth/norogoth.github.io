@@ -16,7 +16,7 @@ body {
     color: white;
     border: none;
     background-color: #4f4061;
-    font-his will have a deleted items area. Hopefully collapsable.pins", sans-serif;
+    font-family: "Poppins", sans-serif;
     display: block;
     width: 100%;
     padding: 1rem;
@@ -50,12 +50,12 @@ body {
     text-align: center;
 }
 
-#ToDos > *:hover, #deletedToDosButton:hover, #back-button:hover{
+.standardButton:hover {
     background-color: rgb(160, 152, 194);
     color:beige;
 }
 
-#ToDos > *:hover {
+.ToDo:hover {
     text-decoration: line-through;
 }
 
@@ -63,16 +63,16 @@ body {
     width: 100%;
 }
 
-#deletedToDosButton {
+.standardButton {
     margin: auto;
 }
 
-#counterDiv, #deletedDiv {
+#counterDiv{
     display: inline-block;
     font-size: 0.8rem;
 }
 
-#ToDos > *, #deletedToDosButton {
+.standardButton {
     display: flex;
     flex-direction: column;
     padding: 1rem;
