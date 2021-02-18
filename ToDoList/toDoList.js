@@ -26,13 +26,26 @@ export const toDoList = {
     createNewToDo: function(inputText) {
         console.log("A new todo was created with data: " + inputText);
         const newToDo = document.createElement("button");
+        const deleteButton = document.createElement("button");
+        deleteButton.classList.add("deleteButton");
+        deleteButton.classList.add("standardButton");
+        deleteButton.innerHTML = "x";
+        deleteButton.addEventListener("click", (event) => {
+            const deleteButton = event.target;
+            const toDoToDelete = deleteButton.parentElement;
+            toDoToDelete.remove();
+        })
         newToDo.innerHTML = inputText;
+        deleteButton.addEventListener("click", () => {
+            event.stopPropagation();
+        })
         newToDo.addEventListener("click", () =>{
             newToDo.remove();
-            pubsub.publish('toDoDeleted', inputText);
+            pubsub.publish('toDoCompleted', inputText);
         })
         newToDo.classList.add("standardButton");
         newToDo.classList.add("ToDo");
+        newToDo.appendChild(deleteButton);
         toDoListDiv.appendChild(newToDo);
         pubsub.publish('toDoAdded', inputText);
     },

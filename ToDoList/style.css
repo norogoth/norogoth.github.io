@@ -1,10 +1,6 @@
 body {
     background-color: rgb(70, 64, 95);
 }
-
-* {
-    box-sizing: border-box;
-  }
   
 .back-button {
     position: fixed;
@@ -55,16 +51,24 @@ body {
     color:beige;
 }
 
+.ToDo {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    min-width: 90%;
+    margin-top: .5rem;
+}
+
 .ToDo:hover {
     text-decoration: line-through;
 }
 
-#ToDoListDiv {
-    width: 100%;
+.ToDo:hover > .deleteButton{
+    text-decoration: none;
 }
 
-.standardButton {
-    margin: auto;
+#ToDoListDiv {
+    width: 100%;
 }
 
 #counterDiv{
@@ -72,26 +76,25 @@ body {
     font-size: 0.8rem;
 }
 
+.deleteButton {
+    max-width: 40px;
+    min-width: 40px;
+}
+
+.deleteButton:hover {
+    background-color: rgb(177, 49, 123);
+    text-decoration: none;
+}
+
 .standardButton {
-    display: flex;
-    flex-direction: column;
-    padding: 1rem;
-    justify-content: center;
-    margin-top: 1rem;
-    border-radius: 1rem;
+    padding: .5rem;
+    border-radius: .75rem;
     background-color: rgb(75, 63, 109);
     color: rgb(255, 255, 255);
     border: none;
     font-size: 1rem;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
-
-#ToDos > *, #inputNewToDo {
-    margin-left: auto;
-    margin-right: auto;
-    width: 90%;
-}
-
 
 #inputNewToDo {
     border-radius: 1rem;

@@ -1,6 +1,6 @@
 import { pubsub } from './pubsub.js';
 import { toDoList } from './toDoList.js';
-import { deletedToDos } from './deletedToDos.js';
+import { completedToDos } from './completedToDos.js';
 
 //pubsub.subscribe('toDoAdded',toDoList.render); //TODO: Fix this.
 
