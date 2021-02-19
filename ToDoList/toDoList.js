@@ -34,6 +34,7 @@ export const toDoList = {
             const deleteButton = event.target;
             const toDoToDelete = deleteButton.parentElement;
             toDoToDelete.remove();
+            pubsub.publish('toDoDeleted');
         })
         newToDo.innerHTML = inputText;
         deleteButton.addEventListener("click", () => {
@@ -51,4 +52,5 @@ export const toDoList = {
     },
 }
 
+console.log("TDL loaded");
 pubsub.subscribe('toDoUnDeleted', toDoList.createNewToDo);
