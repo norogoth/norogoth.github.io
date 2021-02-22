@@ -2,7 +2,7 @@ import {pubsub} from './pubsub.js';
 
 export const completedToDos = {
     list: [],
-    showToDos: false,
+    showToDos: true,
     div: document.getElementById("completedToDosDiv"),
 
     toggle: function() {
@@ -42,7 +42,7 @@ export const completedToDos = {
             pubsub.publish('toDoUnDeleted', inputText);
         })
         completedToDo.classList.add("standardButton");
-        completedToDo.classList.add("DeletedToDo");
+        completedToDo.classList.add("completedToDo");
         completedToDos.list.push(completedToDo);
         completedToDos.list.forEach(item =>{
             console.log(item);

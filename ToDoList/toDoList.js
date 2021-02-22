@@ -27,8 +27,10 @@ export const toDoList = {
         console.log("A new todo was created with data: " + inputText);
         const newToDo = document.createElement("button");
         const deleteButton = document.createElement("button");
+        const buttonLabel = document.createElement("label");
         deleteButton.classList.add("deleteButton");
         deleteButton.classList.add("standardButton");
+        buttonLabel.classList.add("buttonLabel");
         deleteButton.innerHTML = "x";
         deleteButton.addEventListener("click", (event) => {
             const deleteButton = event.target;
@@ -36,7 +38,7 @@ export const toDoList = {
             toDoToDelete.remove();
             pubsub.publish('toDoDeleted');
         })
-        newToDo.innerHTML = inputText;
+        buttonLabel.innerHTML = inputText;
         deleteButton.addEventListener("click", () => {
             event.stopPropagation();
         })
@@ -46,6 +48,7 @@ export const toDoList = {
         })
         newToDo.classList.add("standardButton");
         newToDo.classList.add("ToDo");
+        newToDo.appendChild(buttonLabel);
         newToDo.appendChild(deleteButton);
         toDoListDiv.appendChild(newToDo);
         pubsub.publish('toDoAdded', inputText);

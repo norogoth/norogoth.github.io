@@ -30,5 +30,3 @@ calcButton.addEventListener("click", () => {
 toDoButton.addEventListener("click", () => {
     window.location.assign("./ToDoList/index.html");
 });
-
-let var = "lorem ipsum dolor";
