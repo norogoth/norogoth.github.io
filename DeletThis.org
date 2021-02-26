@@ -1,0 +1,20 @@
+onclick = {() => myFunction()} Higher-order function. Use to pass to a function. Returns the function. Will run.
+Creating a function that returns a function. So if you click on it, it will call the parent function, which returns the child function.
+
+
+
+
+onclick = {myFunction} Gets the event and passes the arguments. Passes reference. Will run.
+
+
+
+
+
+onclick = {myFunction()}
+Just invokes the function right there. Even with NO click.
+
+
+
+
+
+onclick = {() => myFunction} Just bad code. A function that returns a reference to a function.

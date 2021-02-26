@@ -1,0 +1,22 @@
+.grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    min-height: 200px;
+    max-width: 60%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.cell {
+    font-size: 2rem;
+}
+
+
+.cell:nth-child(3n) {
+
+}
+
+#playGrid {
+    width: 80vw;
+    height: 50vw;
+}

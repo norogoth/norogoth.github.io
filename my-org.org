@@ -1,5 +1,23 @@
-* Today's ToDos
-    ** TODO: apply
-    ** TODO: pp
-    ** TODO: Fix the SQL problem for gosh sake.
-    ** TODO: Refactor the todo list to use state design
+* Chet questions
+    ** I am confused on how props work in React.
+        - JTC I cannot assign an onClick property to directly assign how event will be handled?
+        - Does the () => in line 6 prevent the function from running? Making it a reference instead?
+    ** How do I retrieve useState attributes? I do not understand what problem it solves or why the following code is considered bad
+        #+
+            function Greet({ name }) {
+             const message = `Hello, ${name}!`; // Calculates output
+
+            // Bad!
+            document.title = 'Greetings page'; // Side-effect!
+
+            return <div>{message}</div>;       // Calculates output}
+        #+
+        Source: - https://dmitripavlutin.com/react-useeffect-explanation/
+
+
+    ** I am having difficulty understanding useEffect.
+    ** Why can you do 
+        #+
+              const [stepNumber, setStepNumber] = useState(0);
+        #+
+        That makes me feels like in some "useState" object, there is already a "stepNumber" attribute so we can deconstruct it.
