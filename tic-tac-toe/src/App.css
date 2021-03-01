@@ -9,6 +9,7 @@
 
 .cell {
     font-size: 2rem;
+    box-sizing: border-box;
 }
 
 
@@ -17,6 +18,14 @@
 }
 
 #playGrid {
-    width: 80vw;
-    height: 50vw;
+    width: 40vw;
+    height: 30vw;
+}
+
+.row {
+    display: flex;
+}
+
+.column {
+    flex:50%
 }
