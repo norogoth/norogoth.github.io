@@ -1,5 +1,5 @@
 import './App.css';
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 
 
 function Box(props) {
@@ -7,12 +7,12 @@ function Box(props) {
 }
 function PlayGrid(props){
   
-  console.log("props in playgrid: " ,props);
+  //console.log("props in playgrid: " ,props);
 
   return (
     <div className="grid" id="playGrid">
         {props.history.squares.map( (cell, index) => {
-          console.log("cell: ", cell);
+          //console.log("cell: ", cell);
           return (<Box index={index} handleClick={props.squareClick} key={index} className="cell">{cell}</Box>);
         })}
     </div>
@@ -25,9 +25,9 @@ function Game() {
   const [winner, setWinner] = useState(null);
 
   const moves = history.map((object, index) => {
-    const description = index === 0 ? "Go to start" :  "Go to move " + (index - 1);
+    const description = index === 0 ? "Go to start" :  "Go to move " + (index);
     return(<li>
-      <button>{description}</button>
+      <button onClick = {() => jumpTo(index + 1)}>{description}</button>
       </li>);
   }); //we will use a map feature that maps each move to a button.
   
@@ -47,26 +47,37 @@ function Game() {
     lines.forEach((line) => {
       const [a,b,c] = line;
       if (squares[a] && squares[a] === squares[b] && squares[b] === squares[c]){
-        return squares[a]; // return the winner: X or O
+        console.log("SOMEONE WON!");
+        setWinner( squares[a]); // return the winner: X or O
+      }
+      else {
+        setWinner(null);
       }
     })
-    return null;
   }
 
   function squareClick(i){
-    const current = history[history.length - 1];
-    const squares = current.squares.slice();
-    if (squares[i]){
-      return;
-    }
-    squares[i] = turnCount;
-    console.log(i);
-    setHistory(history.concat([{ squares: squares }]));
-    if (!didSomeoneWin()){
-      setTurnCount(history.length % 2 === 0 ? "O" : "X");   
+    if (winner !== "X" && winner !== "O"){
+      console.log("winner: ", winner);
+      setTurnCount(history.length % 2 === 0 ? "X" : "O");   
+      const current = history[history.length - 1];
+      const squares = current.squares.slice();
+      if (squares[i]){
+        return;
+      }
+      squares[i] = turnCount;
+      console.log(i);
+      console.log("history before: ", history[history.length - 1]);
+      setHistory(history.concat([{ squares: squares }]));
+      console.log("history after: ", history[history.length - 1]);
     }
   }
 
+  function jumpTo(i) {
+    const newHistory = history.slice(0, i);
+    setHistory(newHistory);
+    didSomeoneWin();
+  }
 
   return (
   <div className="row">
