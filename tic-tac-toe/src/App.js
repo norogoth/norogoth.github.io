@@ -23,17 +23,18 @@ function Game() {
   const [history, setHistory] = useState([{squares: Array(9).fill(null)}]);
   const [turnCount, setTurnCount] = useState("X");
   const [winner, setWinner] = useState(null);
+  useEffect(()=>{
+      setTurnCount(history.length % 2 === 0 ? "O" : "X");   
+  }, [history])
 
   const moves = history.map((object, index) => {
     const description = index === 0 ? "Go to start" :  "Go to move " + (index);
     return(<li>
-      <button onClick = {() => jumpTo(index + 1)}>{description}</button>
+      <button onClick = {() => jumpTo(index + 1)} className="jumpButton">{description}</button>
       </li>);
   }); //we will use a map feature that maps each move to a button.
   
-  function didSomeoneWin(){
-    const squares = history[history.length - 1].squares;
-    console.log("history: ", history, " squares: ", squares);
+  function didSomeoneWin(squares){
     const lines = [
       [0,1,2],
       [3,4,5],
@@ -47,18 +48,14 @@ function Game() {
     lines.forEach((line) => {
       const [a,b,c] = line;
       if (squares[a] && squares[a] === squares[b] && squares[b] === squares[c]){
-        console.log("SOMEONE WON!");
-        setWinner( squares[a]); // return the winner: X or O
-      }
-      else {
-        setWinner(null);
+        setWinner(squares[a]); // return the winner: X or O
       }
     })
   }
 
   function squareClick(i){
+    console.log("Turncount: ", turnCount, " history.length: ",history.length);
     if (winner !== "X" && winner !== "O"){
-      console.log("winner: ", winner);
       setTurnCount(history.length % 2 === 0 ? "X" : "O");   
       const current = history[history.length - 1];
       const squares = current.squares.slice();
@@ -67,16 +64,16 @@ function Game() {
       }
       squares[i] = turnCount;
       console.log(i);
-      console.log("history before: ", history[history.length - 1]);
       setHistory(history.concat([{ squares: squares }]));
-      console.log("history after: ", history[history.length - 1]);
+      didSomeoneWin(squares);
     }
   }
 
   function jumpTo(i) {
     const newHistory = history.slice(0, i);
     setHistory(newHistory);
-    didSomeoneWin();
+    setWinner(null);
+    setTurnCount(newHistory.length % 2 === 0 ? "X" : "O");   
   }
 
   return (
