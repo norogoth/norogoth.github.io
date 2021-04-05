@@ -1,5 +1,10 @@
 import React, {useState, useEffect} from 'react';
-import logo from './logo.svg';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from 'react-router-dom';
 import './App.css';
 
 const bingoValueUrl = 'http://127.0.0.1:8000/bingo_values';
@@ -32,9 +37,10 @@ function BingoGrid(props) {
   )
 }
 
-function App() {
+function BingoPage(props) {
   const [bingoData, setBingoData] = useState({
   });
+
   const [values, setValues] = useState({
     0: "error",
     1: "error",
@@ -46,7 +52,6 @@ function App() {
     7: "error",
     8: "error",
   })
-
 
   function setRandomValues() {
     console.log('bingodata after srv call: ',bingoData);
@@ -76,16 +81,52 @@ function App() {
 
   console.log('bingoData before component return',bingoData);
   console.log('bingoValues before component return',values);
-  setRandomValues();
+
+  setRandomValues();return (
+        <div className="App">
+          <h1>Gus and Eddy Podcast Bingo</h1>
+          <p>I like the Gus and Eddy Podcast. Eddy Burback is very cool!</p>
+          <button>randomize!</button>
+          <span>Bingo ID: </span><input id="bingoId"></input>
+          <button>
+            <Link to="/UserSubmissions">Submit a Bingo Option</Link>
+          </button>
+          <BingoGrid values={values} bingoData={bingoData}/>
+        </div>
+    );
+}
+
+function UserSubmissions() {
+  return (
+    <div id="userSubmissions">
+      <h1>User Submissions</h1>
+      <p>Here you can submit your own bingo values. Hopefully some day I can get upvoting and downvoting options as well.</p>
+      <table>
+        <tr>
+          <th>name</th>
+          <th>upvotes</th>
+        </tr>
+      </table>
+    </div>
+  )
+}
+
+function App() {
+  
 
   return (
-    <div className="App">
-      <h1>Gus and Eddy Podcast Bingo</h1>
-      <p>I like the Gus and Eddy Podcast. Eddy Burback is very cool!</p>
-      <button>randomize!</button>
-      <span>Bingo ID: </span><input id="bingoId"></input>
-      <BingoGrid values={values} bingoData={bingoData}/>
-    </div>
+    <Router>
+      <div>
+        <Switch>
+          <route path="/UserSubmissions">
+            <UserSubmissions/>
+          </route>
+          <route path="/">
+            <BingoPage/>
+          </route>
+        </Switch>
+      </div>
+    </Router>
   );
 }
 
