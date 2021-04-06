@@ -64,7 +64,10 @@ export default function BingoPage(props) {
   
     useEffect(() => {
       fetch(bingoValueUrl)
-      .then(res => res.json())
+      .then(res => {
+        console.log('wesult OwO: ', res);
+        return res.json()
+      })
       .then(data => {
         console.log("Here is the sql Data we found: ",data.data);
         setBingoData(data.data);
