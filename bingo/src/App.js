@@ -18,47 +18,88 @@ function BingoGrid(props) {
     <table id="bingoGrid">
       <tbody>
         <tr>
-          <td id="0">{props.values["0"]}</td>
-          <td id="1">{props.values["1"]}</td>
-          <td id="2">{props.values["2"]}</td>
+          <td id="0">{props.values[0].value}</td>
+          <td id="1">{props.values["1"].value}</td>
+          <td id="2">{props.values["2"].value}</td>
+          <td id="3">{props.values["3"].value}</td>
+          <td id="4">{props.values["4"].value}</td>
         </tr>
         <tr>
-          <td id="3">{props.values["3"]}</td>
-          <td id="4">{props.values["4"]}</td>
-          <td id="5">{props.values["5"]}</td>
+          <td id="5">{props.values["5"].value}</td>
+          <td id="6">{props.values["6"].value}</td>
+          <td id="7">{props.values["7"].value}</td>
+          <td id="8">{props.values["8"].value}</td>
+          <td id="9">{props.values["9"].value}</td>
         </tr>
         <tr>
-          <td id="6">{props.values["6"]}</td>
-          <td id="7">{props.values["7"]}</td>
-          <td id="8">{props.values["8"]}</td>
+          <td id="10">{props.values["10"].value}</td>
+          <td id="11">{props.values["11"].value}</td>
+          <td id="12">{props.values["12"].value}</td>
+          <td id="13">{props.values["13"].value}</td>
+          <td id="14">{props.values["14"].value}</td>
+        </tr>
+        <tr>
+          <td id="15">{props.values["15"].value}</td>
+          <td id="16">{props.values["16"].value}</td>
+          <td id="17">{props.values["17"].value}</td>
+          <td id="18">{props.values["18"].value}</td>
+          <td id="19">{props.values["19"].value}</td>
+        </tr>
+        <tr>
+          <td id="20">{props.values["20"].value}</td>
+          <td id="21">{props.values["21"].value}</td>
+          <td id="22">{props.values["22"].value}</td>
+          <td id="23">{props.values["23"].value}</td>
+          <td id="24">{props.values["24"].value}</td>
         </tr>
       </tbody>
     </table>
   )
 }
 
-function BingoPage(props) {
-  const [bingoData, setBingoData] = useState({
-  });
 
-  const [values, setValues] = useState({
-    0: "error",
-    1: "error",
-    2: "error",
-    3: "error",
-    4: "error",
-    5: "error",
-    6: "error",
-    7: "error",
-    8: "error",
-  })
+function BingoPage(props) {
+  const [bingoData, setBingoData] = useState({});
+
+  const [displayedBD, setDisplayedBD] = useState({})
+
+  const [values, setValues] = useState([
+    {"value":"error","isChecked":false},
+    {"value":"error","isChecked":false},
+    {"value":"error","isChecked":false},
+    {"value":"error","isChecked":false},
+    {"value":"error","isChecked":false},
+    {"value":"error","isChecked":false},
+    {"value":"error","isChecked":false},
+    {"value":"error","isChecked":false},
+    {"value":"error","isChecked":false},
+    {"value":"error","isChecked":false},
+    {"value":"error","isChecked":false},
+    {"value":"error","isChecked":false},
+    {"value":"error","isChecked":false},
+    {"value":"error","isChecked":false},
+    {"value":"error","isChecked":false},
+    {"value":"error","isChecked":false},
+    {"value":"error","isChecked":false},
+    {"value":"error","isChecked":false},
+    {"value":"error","isChecked":false},
+    {"value":"error","isChecked":false},
+    {"value":"error","isChecked":false},
+    {"value":"error","isChecked":false},
+    {"value":"error","isChecked":false},
+    {"value":"error","isChecked":false},
+    {"value":"error","isChecked":false},
+  ])  
+
+console.log("value of zero: ", values["0"].value);
 
   function setRandomValues() {
     console.log('bingodata after srv call: ',bingoData);
     let newValues = values;
     let i;
     let numbersUsed = [];
-    for (i=0; i < 9; i++){
+    console.log("values.length", values.length);
+    for (i=0; i < 25; i++){
       let isRepeat = true;
       while (isRepeat){
         const nextValue = Math.floor(Math.random() * bingoData.length);
@@ -82,7 +123,9 @@ function BingoPage(props) {
   console.log('bingoData before component return',bingoData);
   console.log('bingoValues before component return',values);
 
-  setRandomValues();return (
+  setRandomValues();
+  
+  return (
         <div className="App">
           <h1>Gus and Eddy Podcast Bingo</h1>
           <p>I like the Gus and Eddy Podcast. Eddy Burback is very cool!</p>
@@ -115,15 +158,15 @@ function App() {
   
 
   return (
-    <Router>
+    <Router id="router">
       <div>
         <Switch>
-          <route path="/UserSubmissions">
+          <Route path="/UserSubmissions">
             <UserSubmissions/>
-          </route>
-          <route path="/">
+          </Route>
+          <Route path="/">
             <BingoPage/>
-          </route>
+          </Route>
         </Switch>
       </div>
     </Router>
