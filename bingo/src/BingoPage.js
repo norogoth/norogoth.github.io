@@ -6,7 +6,8 @@ import {
   Route,
   Link
 } from 'react-router-dom';
-import bingoValueUrl from './App.js';
+
+const bingoDbUrl = "http://127.0.0.1:8000/bingo_values";
 
 export default function BingoPage(props) {
   
@@ -45,7 +46,7 @@ export default function BingoPage(props) {
     function setRandomValues() {
       let newValues = values;
       console.log("New values: ", newValues);
-      console.log("BingoData: ",bingoData);
+      console.log("BingoData during setRandomValues(): ",bingoData);
       let i;
       let numbersUsed = [];
       for (i=0; i < 25; i++){
@@ -54,30 +55,35 @@ export default function BingoPage(props) {
           const nextValue = Math.floor(Math.random() * bingoData.length);
           if (!numbersUsed.includes(nextValue)){
             isRepeat = false;
-            newValues[i] = nextValue; 
+            newValues[i] = bingoData[nextValue].name;
           }
         }
       }
       setValues(newValues);
+      setDisplayedBD(newValues);
       console.log("values: ",values);
     }
   
     useEffect(() => {
-      fetch(bingoValueUrl)
+      console.log("fetching bingo data.");
+      fetch(bingoDbUrl)
       .then(res => {
-        console.log('wesult OwO: ', res);
+        console.log('res: ',res);
         return res.json()
       })
       .then(data => {
         console.log("Here is the sql Data we found: ",data.data);
         setBingoData(data.data);
+        console.log("bingoData: ",bingoData);
       })
       //setRandomValues();
     }, [])
-  
+
     useEffect(() => {
-      setRandomValues()
-    }, )
+      if (bingoData) {
+        setRandomValues();
+      }
+    }, [bingoData])
   
     //setRandomValues();
     
@@ -90,7 +96,7 @@ export default function BingoPage(props) {
             <button>
               <Link to="/UserSubmissions">Submit a Bingo Option</Link>
             </button>
-            <BingoGrid values={values} bingoData={bingoData}/>
+            <BingoGrid values={values} bingoData={bingoData} displayedBD={displayedBD}/>
           </div>
       );
   }
