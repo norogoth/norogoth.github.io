@@ -49,19 +49,27 @@ export default function BingoPage(props) {
       console.log("BingoData during setRandomValues(): ",bingoData);
       let i;
       let numbersUsed = [];
-      for (i=0; i < 25; i++){
-        let isRepeat = true;
-        while (isRepeat){
-          const nextValue = Math.floor(Math.random() * bingoData.length);
-          if (!numbersUsed.includes(nextValue)){
-            isRepeat = false;
-            newValues[i] = bingoData[nextValue].name;
-          }
-        }
+      
+
+
+      let bdArray = [];
+      for (i=0; i < bingoData.length; i ++){
+        bdArray.push(i);
       }
+      //shuffle bdArray
+      for (i=bdArray.length - 1; i > 0; i--){
+        const j = Math.floor(Math.random() * (i + 1));
+        [bdArray[i], bdArray[j]] = [bdArray[j],bdArray[i]];
+      }
+      console.log("bdArrayRandomized", bdArray);
+
+      for (i=0; i < 25; i++){
+            newValues[i] = bingoData[i].name;
+          }
+
       setValues(newValues);
       setDisplayedBD(newValues);
-      console.log("displayed values: ",displayedBD);
+      console.log("values: ",values);
     }
   
     useEffect(() => {
