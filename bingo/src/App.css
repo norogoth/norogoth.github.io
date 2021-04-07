@@ -12,7 +12,8 @@ button {
 }
 
 table {
-  width: 80%;
+  width: 90%;
+  max-width: 500px;
   /* border: 5px solid salmon;
   border-radius: .5rem; */
 }
