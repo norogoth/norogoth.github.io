@@ -55,14 +55,13 @@ export default function BingoPage(props) {
           const nextValue = Math.floor(Math.random() * bingoData.length);
           if (!numbersUsed.includes(nextValue)){
             isRepeat = false;
-            console.log("bingoData of next value: ",bingoData);
             newValues[i] = bingoData[nextValue].name;
           }
         }
       }
       setValues(newValues);
       setDisplayedBD(newValues);
-      console.log("values: ",values);
+      console.log("displayed values: ",displayedBD);
     }
   
     useEffect(() => {
