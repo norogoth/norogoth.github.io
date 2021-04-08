@@ -10,7 +10,12 @@ import {
 const bingoDbUrl = "http://127.0.0.1:8000/bingo_values";
 
 export default function BingoPage(props) {
-  
+
+    function randomHead() {
+      let eddyHeadPath = './eddy_head.png';
+      let gusHeadPath = './gus_head.png';
+    }
+
     const [bingoData, setBingoData] = useState({});
   
     const [displayedBD, setDisplayedBD] = useState({})
@@ -44,14 +49,9 @@ export default function BingoPage(props) {
     ])  
   
     function setRandomValues() {
-      let newValues = values;
-      console.log("New values: ", newValues);
-      console.log("BingoData during setRandomValues(): ",bingoData);
+      let newValues = [...values];
       let i;
       let numbersUsed = [];
-      
-
-
       let bdArray = [];
       for (i=0; i < bingoData.length; i ++){
         bdArray.push(i);
@@ -62,14 +62,12 @@ export default function BingoPage(props) {
         [bdArray[i], bdArray[j]] = [bdArray[j],bdArray[i]];
       }
       console.log("bdArrayRandomized", bdArray);
-
       for (i=0; i < 25; i++){
-            newValues[i] = bingoData[i].name;
+            newValues[i] = bingoData[bdArray[i]].name;
           }
-
       setValues(newValues);
       setDisplayedBD(newValues);
-      console.log("values: ",values);
+      console.log("values: ", displayedBD);
     }
   
     useEffect(() => {
@@ -96,12 +94,12 @@ export default function BingoPage(props) {
           <div className="App">
             <h1>Gus and Eddy Podcast Bingo</h1>
             <p>I like the Gus and Eddy Podcast. Eddy Burback is very cool!</p>
-            <button>randomize!</button>
+            <button onClick={() => setRandomValues()}>randomize!</button>
             <span>Bingo ID: </span><input id="bingoId"></input>
             <button>
               <Link to="/UserSubmissions">Submit a Bingo Option</Link>
             </button>
-            <BingoGrid values={values} bingoData={bingoData} displayedBD={displayedBD}/>
+            <BingoGrid values={values} bingoData={bingoData} setDisplayedBD={setDisplayedBD} displayedBD={displayedBD}/>
           </div>
       );
   }
