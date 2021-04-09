@@ -49,9 +49,9 @@ export default function BingoPage(props) {
     ])  
   
     function setRandomValues() {
+      let newdisplayedValues = [...values];
       let newValues = [...values];
       let i;
-      let numbersUsed = [];
       let bdArray = [];
       for (i=0; i < bingoData.length; i ++){
         bdArray.push(i);
@@ -61,13 +61,12 @@ export default function BingoPage(props) {
         const j = Math.floor(Math.random() * (i + 1));
         [bdArray[i], bdArray[j]] = [bdArray[j],bdArray[i]];
       }
-      console.log("bdArrayRandomized", bdArray);
       for (i=0; i < 25; i++){
-            newValues[i] = bingoData[bdArray[i]].name;
+            newdisplayedValues[i] = bingoData[bdArray[i]].name;
+            newValues[i].value = bingoData[bdArray[i]].name;
           }
       setValues(newValues);
-      setDisplayedBD(newValues);
-      console.log("values: ", displayedBD);
+      setDisplayedBD(newdisplayedValues);
     }
   
     useEffect(() => {
@@ -80,7 +79,6 @@ export default function BingoPage(props) {
       .then(data => {
         console.log("Here is the sql Data we found: ",data.data);
         setBingoData(data.data);
-        console.log("bingoData: ",bingoData);
       })
     }, [])
 
@@ -99,7 +97,7 @@ export default function BingoPage(props) {
             <button>
               <Link to="/UserSubmissions">Submit a Bingo Option</Link>
             </button>
-            <BingoGrid values={values} bingoData={bingoData} setDisplayedBD={setDisplayedBD} displayedBD={displayedBD}/>
+            <BingoGrid values={values} setValues={setValues} bingoData={bingoData} setDisplayedBD={setDisplayedBD} displayedBD={displayedBD}/>
           </div>
       );
   }

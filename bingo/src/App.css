@@ -11,6 +11,11 @@ button {
   height: 100%;
 }
 
+.headImage {
+  height: 100%;
+  width: 100%;
+}
+
 table {
   width: 90%;
   max-width: 600px;
