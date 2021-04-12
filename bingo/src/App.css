@@ -1,3 +1,8 @@
+.bingoWrapper {
+  display: grid;
+  place-content: center;
+}
+
 button {
     background-color: rgb(255, 247, 130);
     border: none;
@@ -16,7 +21,8 @@ button {
 }
 
 table {
-  width: 80%;
+  width: 100vw;
+  width: 100vw;
   max-width: 600px;
   /* border: 5px solid salmon;
   border-radius: .5rem; */

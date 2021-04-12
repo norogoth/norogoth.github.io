@@ -16,10 +16,10 @@ export default function BingoPage(props) {
       let gusHeadPath = './gus_head.png';
     }
 
+    const [didIWin, setDidIWin] = useState(false);
+    console.log('didIWin at start of code:',didIWin);
     const [bingoData, setBingoData] = useState({});
-  
     const [displayedBD, setDisplayedBD] = useState({})
-  
     const [values, setValues] = useState([
       {"value":"error","isChecked":false},
       {"value":"error","isChecked":false},
@@ -64,6 +64,7 @@ export default function BingoPage(props) {
       for (i=0; i < 25; i++){
             newdisplayedValues[i] = bingoData[bdArray[i]].name;
             newValues[i].value = bingoData[bdArray[i]].name;
+            newValues[i].isChecked = false;
           }
       setValues(newValues);
       setDisplayedBD(newdisplayedValues);
@@ -89,7 +90,6 @@ export default function BingoPage(props) {
     }, [bingoData])
     
     function checkifBingo() {
-      let didIWin = false;
       let winngingArrays = [
         [0,1,2,3,4],
         [5,6,7,8,9],
@@ -104,10 +104,10 @@ export default function BingoPage(props) {
         [0,6,12,18,24],
         [4,8,12,16,20],
       ]
-  
+      let isWin = false;
       winngingArrays.forEach((arr, index) => {
-        let isThisArrayAWinner = null;
         let fiveToWin = 0;
+        let isThisArrayAWinner = null;
         arr.forEach((num, index) => {
           let isThatChecked = values[num].isChecked;
           if (isThatChecked === false) {
@@ -118,11 +118,17 @@ export default function BingoPage(props) {
             fiveToWin++;
           }
           if (fiveToWin === 5){
-            didIWin = true;
-            console.log("you win.");
+            isWin = true;
           }
         })
       })
+      if (isWin){
+        setDidIWin(true);
+      }
+      else {
+        setDidIWin(false);
+      }
+      console.log("didIWin: ",didIWin);
     }
     
     useEffect(() => {
@@ -131,14 +137,19 @@ export default function BingoPage(props) {
 
     return (
           <div className="App">
-            <h1>Gus and Eddy Podcast Bingo</h1>
-            <p>I like the Gus and Eddy Podcast. Eddy Burback is very cool!</p>
-            <button onClick={() => setRandomValues()}>randomize!</button>
-            <span>Bingo ID: </span><input id="bingoId"></input>
-            <button>
-              <Link to="/UserSubmissions">Submit a Bingo Option</Link>
-            </button>
-            <BingoGrid values={values} setValues={setValues} bingoData={bingoData} setDisplayedBD={setDisplayedBD} displayedBD={displayedBD}/>
+            <div className="bingoWrapper">
+              <div className="bingoHeader">
+                <h1>Gus and Eddy Podcast Bingo</h1>
+                <p>I like the Gus and Eddy Podcast. Eddy Burback is very cool!</p>
+                <button onClick={() => setRandomValues()}>randomize!</button>
+                <span>Bingo ID: </span><input id="bingoId"></input>
+                <button>
+                  <Link to="/UserSubmissions">Submit a Bingo Option</Link>
+                </button>
+                <p>{didIWin ? 'You Won!': "no winner yet."}</p>
+              </div>
+              <BingoGrid values={values} setValues={setValues} bingoData={bingoData} setDisplayedBD={setDisplayedBD} displayedBD={displayedBD}/>
+            </div>
           </div>
       );
   }
