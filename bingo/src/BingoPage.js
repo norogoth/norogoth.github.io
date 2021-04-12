@@ -146,7 +146,7 @@ export default function BingoPage(props) {
                 <button>
                   <Link to="/UserSubmissions">Submit a Bingo Option</Link>
                 </button>
-                <p>{didIWin ? 'You Won!': "no winner yet."}</p>
+                <p className={didIWin ? "winMessage" : "hiddenWinMessage"}>You Win!</p>
               </div>
               <BingoGrid values={values} setValues={setValues} bingoData={bingoData} setDisplayedBD={setDisplayedBD} displayedBD={displayedBD}/>
             </div>
