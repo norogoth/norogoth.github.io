@@ -27,13 +27,9 @@ export default function BingoCell(props) {
     console.log('values: ',props.values);
   }
 
-  function checkifBingo() {
-    let winngingArrays = [
-      [],
-      [],
-      [],]
-  }
+
   
+
   if(props.values[props.id].isChecked === false){
     return (
       <button onClick={() => handleClick(props.id)} className="bingoButton" id={props.id} setValues={props.setValues}>
