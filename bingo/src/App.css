@@ -1,3 +1,8 @@
+.bingoWrapper {
+  display: grid;
+  place-content: center;
+}
+
 button {
     background-color: rgb(255, 247, 130);
     border: none;
@@ -11,8 +16,14 @@ button {
   height: 100%;
 }
 
+.headImage {
+  height: 78px;
+}
+
 table {
-  width: 80%;
+  width: 100vw;
+  width: 100vw;
+  max-width: 600px;
   /* border: 5px solid salmon;
   border-radius: .5rem; */
 }
@@ -20,18 +31,7 @@ td {
   border: 5px solid rgb(255, 166, 156);
   border-radius: .5rem;
   width: 10%;
-  position: relative;
+  max-width: 1px;
+  height: 100px;
 }
-td:after {
-  content: '';
-  display: block;
-  margin-top: 100%;
-}
-td .content {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background: gold;
-}
+
