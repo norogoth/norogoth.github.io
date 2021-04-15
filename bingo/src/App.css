@@ -4,11 +4,16 @@
   --dark_pink: rgb(150, 69, 150);
 }
 
+#randomizeButtonWrapper {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
 .bingoWrapper {
   display: grid;
   place-content: center;
 }
-
 
 .bingoHeader {
   margin-right: auto;
